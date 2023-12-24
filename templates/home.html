@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Bloggyyy{% endblock %}
+
+{% block body %}
+<br>
+<div style = "width: 1120px; margin-left: 80px">
+    <div class="mb-3">
+        {% if blogs %}
+            {% for blog in blogs %}
+            <div style = "border-style: solid; padding: 50px">
+            <div class = "h3">
+                {{blog.title}}
+            </div>
+            <div class = "lead">
+                {{blog.content}}
+            </div>
+            <div class = "text-muted">
+                - {{ blog.author_id|get_author }},&nbsp;{{blog.date_posted}}
+            </div>
+            </div>
+            <br><br>
+            {% endfor %}
+        {% else %}
+            Be the first to create a blog <br><br><a href = "{% url 'new blog' %}" class = "btn btn-primary">Click here</a> to create your first blog
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
